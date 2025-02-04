@@ -3,7 +3,7 @@ import requests
 import io
 
 # GitHub raw URL a PDF fájlhoz (cseréld ki a sajátodra!)
-GITHUB_PDF_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/cv.pdf"
+GITHUB_PDF_URL = "https://github.com/cserpakzalan2002/CV/blob/main/CserpakZalan_CV%20(1).pdf"
 
 def load_pdf(url):
     """Letölti a PDF-et és betölti egy memória-pufferbe."""
