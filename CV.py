@@ -1,7 +1,8 @@
 import streamlit as st
 import requests
+import base64
 
-# GitHub raw URL a PDF fájlhoz (cseréld ki a sajátodra!)
+# GitHub raw URL a PDF fájlhoz (Cseréld ki a sajátodra!)
 GITHUB_PDF_URL = "https://github.com/cserpakzalan2002/CV/blob/main/CserpakZalan_CV%20(1).pdf"
 
 def get_pdf_from_github(url):
@@ -26,4 +27,8 @@ if pdf_data:
 
     # PDF megjelenítése
     st.write("🔍 **Önéletrajz előnézet**:")
-    st.pdf_reader(pdf_data)
+
+    # Base64 kódolás és beágyazás
+    base64_pdf = base64.b64encode(pdf_data).decode('utf-8')
+    pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="900" type="application/pdf">'
+    st.markdown(pdf_display, unsafe_allow_html=True)
