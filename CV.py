@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 import io
 
-# GitHub raw URL a PDF fájlhoz (Cseréld ki a sajátodra!)
-GITHUB_PDF_URL = "https://github.com/cserpakzalan2002/CV/blob/main/CserpakZalan_CV%20(1).pdf"
+# GitHub raw URL a PDF fájlhoz (cseréld ki a sajátodra!)
+GITHUB_PDF_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/cv.pdf"
 
 def load_pdf(url):
     """Letölti a PDF-et és betölti egy memória-pufferbe."""
@@ -23,4 +23,7 @@ pdf_file = load_pdf(GITHUB_PDF_URL)
 if pdf_file:
     st.download_button(label="📥 Letöltés", data=pdf_file, file_name="cv.pdf", mime="application/pdf")
     st.write("🔍 **Önéletrajz előnézet**:")
-    st.pdf(pdf_file)
+
+    # PDF beágyazás egy iFrame-be
+    pdf_display = f'<iframe src="{GITHUB_PDF_URL}" width="700" height="900" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
